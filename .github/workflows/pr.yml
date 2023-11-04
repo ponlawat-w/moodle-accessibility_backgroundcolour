@@ -8,10 +8,6 @@ on:
       - reopened
       - synchronize
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "${{ github.ref }}"
   ci:
     name: CI
     uses: ponlawat-w/moodle-local_accessibility/.github/workflows/ci.yml@master
