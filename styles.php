@@ -35,4 +35,4 @@ if (!$userconfig) {
     exit;
 }
 
-echo "body.accessibility-backgroundcolour, body.accessibility-backgroundcolour * { background-color: {$userconfig} !important; }";
+echo "body.accessibility-backgroundcolour, body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *) { background-color: {$userconfig} !important; }";
