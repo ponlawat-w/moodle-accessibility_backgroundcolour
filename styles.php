@@ -36,7 +36,8 @@ if (!$userconfig) {
 }
 
 echo <<<EOL
-body.accessibility-backgroundcolour, body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *) {
+body.accessibility-backgroundcolour, 
+body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .btn, .filter_mathjaxloader_equation *) {
     background-color: {$userconfig} !important;
 }
 EOL;
