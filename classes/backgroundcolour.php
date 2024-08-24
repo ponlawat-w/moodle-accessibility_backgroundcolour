@@ -75,8 +75,9 @@ class backgroundcolour extends colourwidget implements apply_style {
         // A check for #XX.. could have been used but this would not allow named css colors such as red, or green.
         $color = preg_replace("/[^A-Za-z0-9#]/", '', $userconfig);
         return <<<EOL
-body.accessibility-backgroundcolour, body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *) {
-    background-color: {$color} !important;
+body.accessibility-backgroundcolour, 
+body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .btn, .filter_mathjaxloader_equation *) {
+    background-color: {$userconfig} !important;
 }
 EOL;
     }
