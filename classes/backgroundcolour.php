@@ -22,16 +22,15 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_accessibility\widgets;
+namespace accessibility_backgroundcolour;
 
-defined('MOODLE_INTERNAL') || die();
-
-require_once(__DIR__ . '/../../classes/colourwidget.php');
+use local_accessibility\widgets\apply_style;
+use local_accessibility\widgets\colourwidget;
 
 /**
  * Background colour accessibility widget definition
  */
-class backgroundcolour extends colourwidget {
+class backgroundcolour extends colourwidget implements apply_style {
 
     /**
      * Constructor
@@ -52,7 +51,6 @@ class backgroundcolour extends colourwidget {
         $userconfig = $this->getuserconfig();
         if ($userconfig) {
             $this->addbodyclass('accessibility-backgroundcolour');
-            $PAGE->requires->css('/local/accessibility/widgets/backgroundcolour/styles.php');
         }
 
         $PAGE->requires->js_call_amd('local_accessibility/colourwidget', 'init', [
@@ -61,5 +59,25 @@ class backgroundcolour extends colourwidget {
             'background-color',
             'accessibility-backgroundcolour',
         ]);
+    }
+
+    /**
+     * Apply own css styles, will be served to all users when plugin is enabled.
+     *
+     * @return string
+     */
+    public function apply_style(): string {
+        $userconfig = $this->getuserconfig();
+        if (!$userconfig) {
+            return "";
+        }
+        // Strip all special characters except # because its needed for hex colors.
+        // A check for #XX.. could have been used but this would not allow named css colors such as red, or green.
+        $color = preg_replace("/[^A-Za-z0-9#]/", '', $userconfig);
+        return <<<EOL
+body.accessibility-backgroundcolour, body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *) {
+    background-color: {$color} !important;
+}
+EOL;
     }
 }
