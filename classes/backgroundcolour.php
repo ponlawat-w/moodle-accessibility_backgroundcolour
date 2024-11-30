@@ -58,7 +58,7 @@ class backgroundcolour extends colourwidget implements apply_style {
             $this->name,
             'background-color',
             'accessibility-backgroundcolour',
-            'body, body *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .filter_mathjaxloader_equation *, img)'
+            'body, body *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .filter_mathjaxloader_equation *, img)',
         ]);
     }
 
