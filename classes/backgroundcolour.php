@@ -58,6 +58,7 @@ class backgroundcolour extends colourwidget implements apply_style {
             $this->name,
             'background-color',
             'accessibility-backgroundcolour',
+            'body, body *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .filter_mathjaxloader_equation *, img)'
         ]);
     }
 
@@ -76,7 +77,7 @@ class backgroundcolour extends colourwidget implements apply_style {
         $color = preg_replace("/[^A-Za-z0-9#]/", '', $userconfig);
         return <<<EOL
 body.accessibility-backgroundcolour,
-body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .btn, .filter_mathjaxloader_equation *) {
+body.accessibility-backgroundcolour *:not(.mediaplugin, .mediaplugin *, .qnbutton *, .filter_mathjaxloader_equation *, img) {
     background-color: {$color} !important;
 }
 EOL;
