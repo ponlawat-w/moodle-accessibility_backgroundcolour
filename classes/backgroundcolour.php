@@ -31,7 +31,6 @@ use local_accessibility\widgets\colourwidget;
  * Background colour accessibility widget definition
  */
 class backgroundcolour extends colourwidget implements apply_style {
-
     /**
      * Constructor
      */
